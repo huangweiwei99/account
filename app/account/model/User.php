@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace app\account\model;
 
 use app\Account\model\UserRole;
+use Ozh\Phpass\PasswordHash;
 
 /**
  * @mixin think\Model
@@ -27,7 +28,11 @@ class User extends Base
      */
     public function setPasswordAttr($value)
     {
-        return sha1(md5($value));
+        $hasher = new PasswordHash(8, true);
+        // 执行加密
+        $hasher_password = $hasher->HashPassword($value);
+
+        return $hasher_password;
     }
 
     /**
