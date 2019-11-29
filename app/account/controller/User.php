@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace app\account\controller;
 
+use app\BaseController;
 use app\middleware\Auth;
 use think\Request;
 
-class User extends Base
+class User extends BaseController
 {
     // protected $middleware = [Auth::class];
 

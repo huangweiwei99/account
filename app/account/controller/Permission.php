@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace app\account\controller;
 
+use app\BaseController;
 use app\middleware\Auth as AuthMiddleWare;
 use think\Request;
 
-class Permission extends Base
+class Permission extends BaseController
 {
     // protected $middleware = [AuthMiddleWare::class];
 

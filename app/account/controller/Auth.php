@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace app\account\controller;
 
+use app\BaseController;
 use think\facade\Session;
 use think\Request;
 
-class Auth extends Base
+class Auth extends BaseController
 {
     public function login(Request $request)
     {

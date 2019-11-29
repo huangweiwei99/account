@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace app\account\controller;
 
+use app\BaseController;
 use think\exception\ValidateException;
 use think\Request;
 
-class Role extends Base
+class Role extends BaseController
 {
     // protected $middleware = [Auth::class];
 
