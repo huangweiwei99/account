@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace app\account\controller;
 
 use app\BaseController;
+use app\middleware\Auth;
 use think\exception\ValidateException;
 use think\Request;
 

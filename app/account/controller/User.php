@@ -71,7 +71,7 @@ class User extends BaseController
     }
 
     /**
-     * 显示指定的用户.
+     * 显示指定的用��.
      *
      * @param int $id
      *
@@ -139,8 +139,8 @@ class User extends BaseController
     public function delete($id)
     {
         $this->validate(['id' => $id], ['id' => 'integer']);
-        $data = $this->app->account_service->deleteUserById($id);
+        $user = $this->app->account_service->deleteUserById($id);
 
-        return json((resultResponse(['data' => '删除成功'])));
+        return json((resultResponse(['data' => $user ? '删除成功' : '没有数据'])));
     }
 }

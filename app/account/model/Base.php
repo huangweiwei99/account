@@ -130,27 +130,21 @@ class Base extends model
      *
      * @param int $id 用户ID
      *
-     * @return bool|app\account\Model\User true|User 模型类
+     * @return bool boolen 布尔值
      */
     public function deleteDataById($id)
     {
         try {
             $this->startTrans();
-            $object = $this->find($id);
-            if ($object) {
-                $data = $object->delete($id);
-                $this->commit();
+            $data = $this->findOrEmpty($id);
+            $data = $data->delete($id);
 
-                return $data;
-            }
-            $this->error = '找不到数据';
-            $this->rollback();
+            $this->commit();
 
-            return $this;
+            return $data;
         } catch (\Throwable $th) {
+            $this->rollback();
             $this->error = '错误:'.$th->getMessage();
-
-            return $this;
         }
     }
 
@@ -171,16 +165,6 @@ class Base extends model
     public function getDataCollectionByField($fields = [])
     {
         return $this->where($fields)->select();
-        // $i=0;
-        // foreach ($fields as  $value) {
-        //     if (0 === $i) {
-        //         $data[0] = $this->where(array_keys($value)[0], array_values($value)[0]);
-        //     }
-        //     ++$i;
-        // }
-
-        // $data[$i] = $data[$i - 1]->where(array_keys($value)[0], array_values($value)[0]);
-        // return $data[]
     }
 
     public function sumDataByField(Type $var = null)
