@@ -10,7 +10,7 @@ use think\Request;
 
 class Role extends BaseController
 {
-    // protected $middleware = [Auth::class];
+    protected $middleware = [Auth::class];
 
     /**
      * 显示角色列表.

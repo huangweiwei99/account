@@ -10,7 +10,7 @@ use think\Request;
 
 class User extends BaseController
 {
-    // protected $middleware = [Auth::class];
+    protected $middleware = [Auth::class];
 
     /**
      * 显示用户列表.
@@ -36,9 +36,8 @@ class User extends BaseController
             'keywords' => 'array',
             'page' => 'number',
             'limit' => 'number', ]);
-        // $keywords = null;
-        // $keywords = [['username' => 'Van'], ['email' => 'sda']];
-        $users = $this->app->account_service->getUsers($keywords, 1, 20, $sort, $order);
+
+        $users = $this->app->account_service->getUsers($keywords, $page, $limit, $sort, $order);
         $users_count = $this->app->account_service->getUsers();
         $user_list['list'] = $users->visible(['id', 'username', 'email', 'phone', 'status']);
         $user_list['count'] = count($users_count);

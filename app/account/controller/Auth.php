@@ -22,13 +22,13 @@ class Auth extends BaseController
         }
         Session::set('username', $user->username);
 
-        return Session::get('username').' login';
+        return json((resultResponse(['data' => Session::get('username').' login'])));
     }
 
     public function Logout()
     {
         Session::delete('username');
 
-        return 'logout';
+        return json((resultResponse(['data' => '退出系统'])));
     }
 }

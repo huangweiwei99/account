@@ -10,7 +10,7 @@ use think\Request;
 
 class Permission extends BaseController
 {
-    // protected $middleware = [AuthMiddleWare::class];
+    protected $middleware = [AuthMiddleWare::class];
 
     /**
      * 显示权限列表.
